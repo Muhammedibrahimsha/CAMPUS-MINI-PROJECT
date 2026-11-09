@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFix | Campus Issue Reporting Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="side">
+      <div class="who">
+        <div class="brand">CampusFix</div>
+        <button id="logout" class="ghost">Log out</button>
+      </div>
+      <p id="hello" class="hello"></p>
+      <h1>Seen something broken? Report it in a minute.</h1>
+
+      <form id="issueForm" autocomplete="off">
+        <label>Location<input id="location" required placeholder="e.g. Block B, Room 204"></label>
+        <div class="row">
+          <label>Category
+            <select id="category">
+              <option>Electrical</option><option>Water</option><option>Internet</option>
+              <option>Furniture</option><option>Cleanliness</option><option>Other</option>
+            </select>
+          </label>
+          <label>Priority
+            <select id="priority"><option>Low</option><option selected>Medium</option><option>High</option></select>
+          </label>
+        </div>
+        <label>What is wrong?<textarea id="description" required placeholder="Describe the problem"></textarea></label>
+        <button type="submit" class="primary">Report issue</button>
+      </form>
+    </aside>
+
+    <main class="board">
+      <section class="stats">
+        <div><b id="sTotal">0</b><span>Reported</span></div>
+        <div><b id="sPending">0</b><span>Pending</span></div>
+        <div><b id="sDone">0</b><span>Resolved</span></div>
+      </section>
+
+      <section class="tools">
+        <input id="search" type="search" placeholder="Search your issues">
+        <div class="chips" id="chips">
+          <button class="chip active" data-f="All">All</button>
+          <button class="chip" data-f="Pending">Pending</button>
+          <button class="chip" data-f="Resolved">Resolved</button>
+        </div>
+      </section>
+
+      <section id="issueList" class="list"></section>
+    </main>
+  </div>
+  <div id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
